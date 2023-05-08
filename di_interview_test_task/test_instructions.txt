@@ -1,0 +1,49 @@
+Instructions:
+============
+
+A) Excel:
+=========
+
+	Go through the "gnb_di_test" excel.
+
+	1) If "Property Ref (Optional)" in the Excel is not found, then Generate it manually through code which should be unique and in chronological order.
+
+	2) Property should be distinguised based on the property class and category.
+
+	3) Property Price should be stored as decimal
+
+	4) Deposit should be calculated based on the Rent.
+
+	5) Commission from price should be calculated based on the Rent. (in %)
+
+	
+	6) Get Landlord data from column L,M & N and insert the Landlord data into the table, repeated data should be removed. If Landlord Ref not found, then Generate it manually through code which should be unique and in chronological order.
+    
+	8) Get Tenant/Buyer data from column R,S & T and insert the Tenant/Buyer data into the table, repeated data should be removed. If Tenant / Buyer Ref not found, then Generate it manually through code which should be unique and in chronological order.
+
+	7) Get Lettings data from column O & P and insert the lettings data into the table. If Letting Ref not found, then Generate it manually through code which should be unique and in chronological order. 
+	(**NOTE: There will be no lettings data for sale property)
+
+	
+B) MySQL:
+=========
+
+	Tables to be created:
+	====================
+
+	1) Properties data should be in properties named table, create table columns and datatype by yourself.
+
+	2) Letings data should be in lettings named table, create table columns and datatype by yourself.
+	
+	3) Clients data should be in clients named table, create table columns and datatype by yourself.
+
+C) PHP Code:
+============
+
+	1) Use "PHPExcel" Library to read date from Excel. (That is available in your test plugins folder itself.)
+	
+	2) create two files properties.php and lettings.php, Read properties data in properties.php whereas read lettings data in lettings.php
+	
+	3) Read Landlord & Buyer data while reading Properties data in properties.php
+	
+	4) Read Tenant data while reading Lettings data in lettings.php

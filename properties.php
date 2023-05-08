@@ -15,7 +15,7 @@ $sheet = $spreadsheet->getActiveSheet();
 $highestColumn = $sheet->getHighestColumn();
 $highestRow = $sheet->getHighestRow();
 
-$mysqli = new mysqli('localhost', 'manivannan', '123456789', 'di_test');
+$mysqli = new mysqli('localhost', 'admin', 'admin', 'di_test');
 
 // Loop through each row and column
 for ($row = 1; $row <= $highestRow; $row++) {
@@ -24,8 +24,8 @@ for ($row = 1; $row <= $highestRow; $row++) {
         $value = $sheet->getCell($col.$row)->getValue();
         echo $value . " ";
     }
-    echo "\n";
+    echo "\n"."<br>";
 }
 
-echo "mani"; 
+echo "Data migrated succesfully"; 
 exit();
