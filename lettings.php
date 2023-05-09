@@ -26,29 +26,31 @@ $highestRow = $worksheet->getHighestRow();
 $highestColumn = $worksheet->getHighestColumn();
 
 for ($row = 2; $row <= $highestRow; $row++) {
+  $sValue = $worksheet->getCell('U' . $row)->getValue();
+  if(!empty($sValue)){
    
-    $wValue = $worksheet->getCell('W' . $row)->getValue();
-    $xValue = $worksheet->getCell('X' . $row)->getValue();
-    $yValue = $worksheet->getCell('Y' . $row)->getValue();
-  
-    // Insert data into MySQL database
-    $sql = "INSERT INTO clients (`name`, `email`, `contact_no`,`type`) VALUES ('$wValue', '$xValue', '$yValue','Tenant')";
-    if ($conn->query($sql) === TRUE) {
-      echo "New Tenant created successfully";
-    } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+        $wValue = $worksheet->getCell('U' . $row)->getValue();
+        $xValue = $worksheet->getCell('V' . $row)->getValue();
+        $yValue = $worksheet->getCell('W' . $row)->getValue();
+      
+        // Insert data into MySQL database
+        $sql = "INSERT INTO clients (`name`, `email`, `contact_no`,`type`) VALUES ('$wValue', '$xValue', '$yValue','Tenant')";
+
+        if ($conn->query($sql) === TRUE) {
+          echo "New Tenant created successfully";
+        } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+   }
   }
 
   // Loop through each row of the worksheet
 for ($row = 2; $row <= $highestRow; $row++) {
     // Get cell values for columns M, N, and O
     $mValue = $worksheet->getCell('A' . $row)->getValue();
-    $nValue = $worksheet->getCell('S' . $row)->getValue();
-    $oValue = $worksheet->getCell('T' . $row)->getValue();
+    $nValue = $worksheet->getCell('R' . $row)->getValue();
+    $oValue = $worksheet->getCell('S' . $row)->getValue();
     
-    
-  
     // Insert data into MySQL database
     $sql = "INSERT INTO lettings (`property_ref`, `let_start_date`, `let_end_date`) VALUES ('$mValue', '$nValue', '$oValue')";
     if ($conn->query($sql) === TRUE) {

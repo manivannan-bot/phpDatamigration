@@ -52,12 +52,12 @@ for ($row = 2; $row <= $highestRow; $row++) {
   $iValue = $worksheet->getCell('I' . $row)->getValue();
   $jValue = $worksheet->getCell('J' . $row)->getValue();
 //   $kValue = $worksheet->getCell('K' . $row)->getValue();
-//   $lValue = $worksheet->getCell('M' . $row)->getValue();
   $mValue = $worksheet->getCell('N' . $row)->getValue();
+  $tValue = $worksheet->getCell('T' . $row)->getValue();
 
   // Insert data into MySQL database
-  $sql = "INSERT INTO properties (`property_ref`, `address_line1`, `address_line2`,`city`,`county`,`postcode`, `property_category`, `property_class`,`property_price`,`deposit`, `commission`,`landlord_id`) 
-                          VALUES ('$aValue', '$bValue', '$cValue','$dValue', '$eValue','$fValue', '$gValue', '$hValue','$iValue', '$jValue', '$mValue','$last_inserted_id')";
+  $sql = "INSERT INTO properties (`property_ref`, `address_line1`, `address_line2`,`city`,`county`,`postcode`, `property_category`, `property_class`,`property_price`,`deposit`, `commission`,`landlord_id`,`tenant_buyer_id`) 
+                          VALUES ('$aValue', '$bValue', '$cValue','$dValue', '$eValue','$fValue', '$gValue', '$hValue','$iValue', '$jValue', '$mValue','$last_inserted_id','$tValue')";
 
   if ($conn->query($sql) === TRUE) {
     echo "New landlord created successfully";
