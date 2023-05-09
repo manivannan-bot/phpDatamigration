@@ -37,7 +37,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
         $sql = "INSERT INTO clients (`name`, `email`, `contact_no`,`type`) VALUES ('$wValue', '$xValue', '$yValue','Tenant')";
 
         if ($conn->query($sql) === TRUE) {
-          echo "New Tenant created successfully";
+          echo "New Tenant created successfully"."<br>";
         } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -46,15 +46,18 @@ for ($row = 2; $row <= $highestRow; $row++) {
 
   // Loop through each row of the worksheet
 for ($row = 2; $row <= $highestRow; $row++) {
-    // Get cell values for columns M, N, and O
-    $mValue = $worksheet->getCell('A' . $row)->getValue();
-    $nValue = $worksheet->getCell('R' . $row)->getValue();
-    $oValue = $worksheet->getCell('S' . $row)->getValue();
+    
+    $aValue = $worksheet->getCell('A' . $row)->getValue();
+    $rValue = $worksheet->getCell('R' . $row)->getValue();
+    
+    //$rValue = DateTime::createFromFormat('Y-m-d', $rValue);
+    // echo "cell val".$rValue->format('Y-m-d');exit();
+    $sValue = $worksheet->getCell('S' . $row)->getValue();
     
     // Insert data into MySQL database
-    $sql = "INSERT INTO lettings (`property_ref`, `let_start_date`, `let_end_date`) VALUES ('$mValue', '$nValue', '$oValue')";
+    $sql = "INSERT INTO lettings (`property_ref`, `let_start_date`, `let_end_date`) VALUES ('$aValue', '$rValue', '$sValue')";
     if ($conn->query($sql) === TRUE) {
-      echo "New lettings created successfully";
+      echo "New lettings created successfully"."<br>";
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
     }

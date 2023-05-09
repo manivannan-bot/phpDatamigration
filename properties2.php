@@ -37,7 +37,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
   
   $sql = "INSERT INTO clients (`client_ref`,`name`, `email`, `contact_no`,`type`) VALUES ('$nValue', '$oValue', '$pValue','$qValue','landlord')";
   if ($conn->query($sql) === TRUE) {
-    echo "landlord created successfully";
+    echo "landlord created successfully"."<br>";
     $last_inserted_id = $conn->insert_id;
   }
   
@@ -51,8 +51,8 @@ for ($row = 2; $row <= $highestRow; $row++) {
   $hValue = $worksheet->getCell('H' . $row)->getValue();
   $iValue = $worksheet->getCell('I' . $row)->getValue();
   $jValue = $worksheet->getCell('J' . $row)->getValue();
-//   $kValue = $worksheet->getCell('K' . $row)->getValue();
-  $mValue = $worksheet->getCell('N' . $row)->getValue();
+  $mValue = $worksheet->getCell('M' . $row)->getValue();
+
   $tValue = $worksheet->getCell('T' . $row)->getValue();
 
   // Insert data into MySQL database
@@ -60,14 +60,14 @@ for ($row = 2; $row <= $highestRow; $row++) {
                           VALUES ('$aValue', '$bValue', '$cValue','$dValue', '$eValue','$fValue', '$gValue', '$hValue','$iValue', '$jValue', '$mValue','$last_inserted_id','$tValue')";
 
   if ($conn->query($sql) === TRUE) {
-    echo "New landlord created successfully";
+    echo "New landlord created successfully"."<br>";
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
 }
 
 for ($row = 2; $row <= $highestRow; $row++) {
-    $sValue = $worksheet->getCell('U' . $row)->getValue();
+    $sValue = $worksheet->getCell('S' . $row)->getValue();
     
     if(empty($sValue)){
             $wValue = $worksheet->getCell('U' . $row)->getValue();
@@ -77,7 +77,7 @@ for ($row = 2; $row <= $highestRow; $row++) {
             // Insert data into MySQL database
             $sql = "INSERT INTO clients (`name`, `email`, `contact_no`,`type`) VALUES ('$wValue', '$xValue', '$yValue','buyer')";
             if ($conn->query($sql) === TRUE) {
-            echo "New buyer created successfully";
+            echo "New buyer created successfully"."<br>";
             } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             }
